@@ -97,7 +97,6 @@ func (ctx *SigningContext) constructSignedInfo(el *etree.Element, enveloped bool
 		reference.CreateAttr(URIAttr, "#"+dataId)
 	}
 
-
 	// /SignedInfo/Reference/Transforms
 	transforms := ctx.createNamespacedElement(reference, TransformsTag)
 	if enveloped {
@@ -135,7 +134,8 @@ func (ctx *SigningContext) ConstructSignature(el *etree.Element, enveloped bool)
 	}
 
 	sig.CreateAttr(xmlns, Namespace)
-	sig.AddChild(signedInfo)
+	//sig.AddChild(signedInfo)
+	sig.InsertChildAt(0, signedInfo)
 
 	// When using xml-c14n11 (ie, non-exclusive canonicalization) the canonical form
 	// of the SignedInfo must declare all namespaces that are in scope at it's final
