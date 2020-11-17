@@ -9,6 +9,7 @@ import (
 	"encoding/base64"
 	"errors"
 	"fmt"
+	"log"
 
 	"github.com/arolek/goxmldsig/etreeutils"
 	"github.com/beevik/etree"
@@ -136,6 +137,7 @@ func (ctx *SigningContext) ConstructSignature(el *etree.Element, enveloped bool)
 	sig.CreateAttr(xmlns, Namespace)
 	//sig.AddChild(signedInfo)
 	sig.InsertChildAt(0, signedInfo)
+	log.Println("insert")
 
 	// When using xml-c14n11 (ie, non-exclusive canonicalization) the canonical form
 	// of the SignedInfo must declare all namespaces that are in scope at it's final
