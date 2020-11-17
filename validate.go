@@ -9,9 +9,9 @@ import (
 	"fmt"
 	"regexp"
 
+	"github.com/arolek/goxmldsig/etreeutils"
+	"github.com/arolek/goxmldsig/types"
 	"github.com/beevik/etree"
-	"github.com/russellhaering/goxmldsig/etreeutils"
-	"github.com/russellhaering/goxmldsig/types"
 )
 
 var uriRegexp = regexp.MustCompile("^#[a-zA-Z_][\\w.-]*$")
@@ -21,7 +21,7 @@ var (
 	// ErrMissingSignature indicates that no enveloped signature was found referencing
 	// the top level element passed for signature verification.
 	ErrMissingSignature = errors.New("Missing signature referencing the top-level element")
-	ErrInvalidSignature = errors.New( "Invalid Signature")
+	ErrInvalidSignature = errors.New("Invalid Signature")
 )
 
 type ValidationContext struct {
